@@ -38,8 +38,7 @@ You're reading it!
 
 #### 1. Explain how (and identify where in your code) you extracted HOG features from the training images.
 
-The code for this step is contained in the first code cell of the IPython notebook (or in lines # through # of the file called `some_file.py`).  
-
+The code for this step is contained in the first code cell of the IPython notebook 
 I started by reading in all the `vehicle` and `non-vehicle` images.  Here is an example of one of each of the `vehicle` and `non-vehicle` classes:
 
 ![alt text][image1]
@@ -53,11 +52,11 @@ Here is an example using the `YCrCb` color space and HOG parameters of `orientat
 
 #### 2. Explain how you settled on your final choice of HOG parameters.
 
-I tried various combinations of parameters and...
+I tried various combinations of parameters and found when I set the `YUV`,we got a better accuraccy when we test the SVM.
 
 #### 3. Describe how (and identify where in your code) you trained a classifier using your selected HOG features (and color features if you used them).
 
-I trained a linear SVM using...
+I trained a linear SVM classifier using the function called `LinearSVC()`.Before we start to train the classifier, we should prepare the dataset.We put the dataset we got from online called vehicle and non-vehicle into the fuction we finish in last step called `extract_feature`.Although we found that `YUV` is a good choice so we just simply choose this color space.After all, we can start to train the classifier.
 
 ### Sliding Window Search
 
@@ -66,7 +65,7 @@ I trained a linear SVM using...
 I decided to search random window positions at random scales all over the image and came up with this (ok just kidding I didn't actually ;):
 
 ![alt text][image3]
-
+I follow the sample code which we pratice in lesson 23.Define a function that takes an image,start and stop positions in both x and y, window size (x and y dimensions), and overlap fraction (for both x and y).Loop through finding x and y window positions, we could vectorize this step, but in practice ,we'll be considering windows one by one with our classifier, so looping makes sense.
 #### 2. Show some examples of test images to demonstrate how your pipeline is working.  What did you do to optimize the performance of your classifier?
 
 Ultimately I searched on two scales using YCrCb 3-channel HOG features plus spatially binned color and histograms of color in the feature vector, which provided a nice result.  Here are some example images:
@@ -77,7 +76,7 @@ Ultimately I searched on two scales using YCrCb 3-channel HOG features plus spat
 ### Video Implementation
 
 #### 1. Provide a link to your final video output.  Your pipeline should perform reasonably well on the entire project video (somewhat wobbly or unstable bounding boxes are ok as long as you are identifying the vehicles most of the time with minimal false positives.)
-Here's a [link to my video result](./project_video.mp4)
+Here's a [link to my video result](./project_video_output.mp4)
 
 
 #### 2. Describe how (and identify where in your code) you implemented some kind of filter for false positives and some method for combining overlapping bounding boxes.
@@ -106,3 +105,4 @@ Here's an example result showing the heatmap from a series of frames of video, t
 
 Here I'll talk about the approach I took, what techniques I used, what worked and why, where the pipeline might fail and how I might improve it if I were going to pursue this project further.  
 
+In this project, we learn lots of things about classifier such like SVM. But those is quite like "traditional "mechine learning skill which means it could get not very good result. In the introduction part of this project, I noticed some powerful method like "YOLO" or "SSD".Maybe I can try in next time to get better result.
